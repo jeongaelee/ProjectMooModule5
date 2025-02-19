@@ -16,17 +16,17 @@
 
 3. 오른쪽의 그래프를 보고 각각의 노드가 어떤 역할을 하는지 살펴봅니다.
 
-    <img src="images/3-03.png" width="720"/>
+    <img src="images/3-03.png" width="800"/>
 
 ## Azure OpenAI 리소스 생성, 모델 배포 및 Connection 생성
 
-summarize_text_content와 clasify_with_llm 노드에서 결과를 생성하기 위해서는 Azure OpenAI에서는 LLM과의 Connection이 필요합니다. 이 단계에서는 Azure OpenAI 리소스를 생성하고 gpt-4o 모델을 배포합니다. 
+summarize_text_content와 clasify_with_llm 노드에서 결과를 생성하기 위해서는 LLM과의 Connection이 필요합니다. 이 단계에서는 Azure OpenAI 리소스를 생성하고 gpt-4o 모델을 배포하여 노드에서 연결해보도록 하겠습니다.
 
 1. [Azure Portal](https://portal.azure.com/)으로 접속하여 새 리소스 만들기를 합니다. azure openai로 검색하여 Azure OpenAI 리소스를 생성합니다.
 
     <img src="images/openai-01.png" width="300"/>
 
-2. Resource group을 새로 만들고, Region은 West US로 선택하고, 이름과 가격 티어를 입력한 후 Next를 누르고 나머지 항목은 기본값으로 유지한 후 Azure OpenAI 리소스를 생성합니다. 이름은 aoai-nov26-instance1으로 입력합니다.
+2. Resource group을 새로 만들고, Region을 선택하고, 이름과 가격 티어를 입력한 후 Next를 누르고 나머지 항목은 기본값으로 유지한 후 Azure OpenAI 리소스를 생성합니다.
 
     <img src="images/openai-02.png" width="600"/>
 
