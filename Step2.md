@@ -28,6 +28,8 @@
 
 ## DeepSeek-R1 모델 배포하기
 
+이번 단계에서는 DeepSeek-R1을 Serverless API로 배포합니다.
+
 1. Project 아래의 "Models + endpoints" 메뉴에서 "Deploy Model"을 선택하고 "Deploy base model"을 선택 합니다.
 
     <img src="images/1-13.png" width="720"/>
@@ -43,6 +45,32 @@
 4. 배포된 모델의 endpoint와 key를 복사합니다.
 
     <img src="images/2-03.png" width="720"/>
+
+* Azure AI Foundry Portal에서 모델이 Serverless로 배포되지 않는 계정이 있습니다. 이때는 [서버리스 API 엔드포인트에 모델 배포를 CLI로 배로하는 옵션](https://learn.microsoft.com/ko-kr/azure/ai-studio/how-to/deploy-models-serverless?tabs=cli#deploy-the-model-to-a-serverless-api-endpoint)으로 진행을 해보시기 바랍니다. 
+
+- CLI는 Azure Portal의 Cloud Shell을 이용하면 간단하게 실행할 수 있습니다.
+
+    <img src="images/cloudshell.png" width="720"/>
+
+- 아래의 Azure CLI 명령어로 subscription과 workspace, group, location을 설정합니다.
+
+    ```
+    az account set --subscription <subscription>
+    az configure --defaults workspace=<project-name> group=<resource-group> location=<location>
+    ```
+
+- 아래와 같이 모델의 name과 model_id를 endpoint.yml이라는 이름으로 저장합니다.
+
+    ```
+    name: DeepSeek-R1-project-moo
+    model_id: azureml://registries/azureml-deepseek/models/DeepSeek-R1
+    ```
+
+- 아래의 Azure CLI 명령어를 실행하여 endpoint.yml 파일을 사용하여 엔드포인트를 만듭니다.
+
+    ```
+    az ml serverless-endpoint create -f endpoint.yml
+    ```
 
 ## DeepSeek-R1 모델을 Serverless Connection으로 설정하기
 
@@ -88,3 +116,4 @@
 
 * [Step 1. Azure AI Foundry 포털에서 Prompt Flow 생성하기](https://github.com/jeongaelee/ProjectMooModule5/blob/main/Step1.md)
 * [Step 2. Visual Studio Code에서 Prompt Flow의 Chat Flow를 생성하고 DeepSeek-R1 모델을 연결하기](https://github.com/jeongaelee/ProjectMooModule5/blob/main/Step2.md)
+* [Step 3. web-classification flow를 이해하고 Python Code에서 실행해보기](https://github.com/jeongaelee/ProjectMooModule5/blob/main/Step3.md)
