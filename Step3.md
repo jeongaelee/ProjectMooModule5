@@ -98,6 +98,36 @@ pip install -r requirements.txt
 
 1. "examples/tutorials/get-started/quickstart.ipynb" 파일을 열어서 각각의 과정을 수행합니다.
 
+
+2. [Optional] 파이썬 노트북의 "1. Create necessary connections" 단계를 실행할때, 아래의 connection을 설정하는 코드에서 이전 단계에서 생성한 "aoai_connection"을 사용하도록 아래와 같이 코드를 수정해 줍니다.
+
+    ```
+    try:
+        conn_name = "aoai_connection"
+        conn = pf.connections.get(name=conn_name)
+        print("using existing connection")
+    except:
+        # Follow https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal to create an Azure OpenAI resource.
+        #connection = AzureOpenAIConnection(
+        #    name=conn_name,
+        #    api_key="<test_key>",
+        #    api_base="<test_base>",
+        #    api_type="azure",
+        #    api_version="<test_version>",
+        #)
+
+        # use this if you have an existing OpenAI account
+        connection = OpenAIConnection(
+            name=conn_name,
+            api_key="<user-input>",
+        )
+
+        conn = pf.connections.create_or_update(connection)
+        print("successfully created connection")
+
+    print(conn)
+    ```
+
 ## 실습 순서
 
 * [Step 1. Azure AI Foundry 포털에서 Prompt Flow 생성하기](https://github.com/jeongaelee/ProjectMooModule5/blob/main/Step1.md)
