@@ -72,6 +72,14 @@ summarize_text_content와 clasify_with_llm 노드에서 결과를 생성하기 �
 
     <img src="images/3-10.png" width="500"/>
 
+Note: Flow 실행 중 아래의 에러가 날 경우에 requirements.txt를 설치해주시기 바랍니다.
+
+<img src="images/bs4error.jpg" width="500"/>
+
+```
+pip install -r requirements.txt
+```
+
 12. Default variant만 사용할 것인지 모든 variant를 사용할 것인지 선택한 후 실행합니다.
 
     <img src="images/3-11.png" width="500"/>
