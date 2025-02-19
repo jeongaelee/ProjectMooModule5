@@ -46,27 +46,27 @@
 
     <img src="images/2-03.png" width="720"/>
 
-* Azure AI Foundry Portal에서 모델이 Serverless로 배포되지 않는 계정이 있습니다. 이때는 [서버리스 API 엔드포인트에 모델 배포를 CLI로 배로하는 옵션](https://learn.microsoft.com/ko-kr/azure/ai-studio/how-to/deploy-models-serverless?tabs=cli#deploy-the-model-to-a-serverless-api-endpoint)으로 진행을 해보시기 바랍니다. 
+* [Note] Azure AI Foundry Portal에서 모델이 Serverless로 배포되지 않는 계정이 있습니다. 이때는 [서버리스 API 엔드포인트에 모델 배포를 CLI로 배로하는 옵션](https://learn.microsoft.com/ko-kr/azure/ai-studio/how-to/deploy-models-serverless?tabs=cli#deploy-the-model-to-a-serverless-api-endpoint)으로 진행을 해보시기 바랍니다. 순서는 아래와 같습니다.
 
-- CLI는 Azure Portal의 Cloud Shell을 이용하면 간단하게 실행할 수 있습니다.
+1.  CLI는 Azure Portal의 Cloud Shell을 이용하면 간단하게 실행할 수 있습니다.
 
     <img src="images/cloudshell.png" width="720"/>
 
-- 아래의 Azure CLI 명령어로 subscription과 workspace, group, location을 설정합니다.
+2. 아래의 Azure CLI 명령어로 subscription과 workspace, group, location을 설정합니다.
 
     ```
     az account set --subscription <subscription>
     az configure --defaults workspace=<project-name> group=<resource-group> location=<location>
     ```
 
-- 아래와 같이 모델의 name과 model_id를 endpoint.yml이라는 이름으로 저장합니다.
+3. 아래와 같이 모델의 name과 model_id를 endpoint.yml이라는 이름으로 저장합니다.
 
     ```
     name: DeepSeek-R1-project-moo
     model_id: azureml://registries/azureml-deepseek/models/DeepSeek-R1
     ```
 
-- 아래의 Azure CLI 명령어를 실행하여 endpoint.yml 파일을 사용하여 엔드포인트를 만듭니다.
+4. 아래의 Azure CLI 명령어를 실행하여 endpoint.yml 파일을 사용하여 엔드포인트를 만듭니다.
 
     ```
     az ml serverless-endpoint create -f endpoint.yml
